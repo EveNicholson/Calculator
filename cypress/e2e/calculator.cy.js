@@ -78,5 +78,45 @@ describe('Calculator App', () => {
   
     cy.get('[data-testid=running-total]').should('have.text', '0.7');
   });
+
+  it('Handles division by zero gracefully', () => {
+    cy.get('[data-testid=number5]').click();
+    cy.log('Clicked number 5');
+    cy.get('[data-testid=operator-divide]').click();
+    cy.log('Clicked divide operator');
+    cy.get('[data-testid=number0]').click();
+    cy.log('Clicked number 0');
+    cy.get('[data-testid=operator-equals]').click();
+    cy.log('Clicked equals operator');
+    
+  });
+  
+  it('The output is as expected for very large numbers', () => {
+    
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=number9]').click();
+    cy.get('[data-testid=operator-add]').click();
+    cy.get('[data-testid=number8]').click();
+    cy.get('[data-testid=number8]').click();
+    cy.get('[data-testid=number8]').click();
+    cy.get('[data-testid=number8]').click();
+    cy.get('[data-testid=number8]').click();
+    cy.get('[data-testid=number8]').click();
+    cy.get('[data-testid=number8]').click();
+    cy.get('[data-testid=number8]').click();
+    cy.get('[data-testid=number8]').click();
+    cy.get('[data-testid=number8]').click();
+   
+    cy.get('[data-testid=operator-equals]').click();
+    cy.get('[data-testid=running-total]').should('have.text', '18888888887');
+  });
   
 });
